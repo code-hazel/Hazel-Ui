@@ -19,11 +19,22 @@ pnpm i -D unocss@"0.45.6"
 pnpm i -D @iconify-json/ic@"1.1.4"
 
 
+
+
+
+
+
+
 # vitepress - 搭建文档网站
  pnpm add vitepress -D
 1. 默认 Vitepress 是无需配置 vitepress.config.ts 的，但是组件库中需要支持 JSX 语法与 UnoCSS，所以就需要添加配置文件
 2. echo '# SmartyUI' > docs/index.md 这句代码可以创建文件哦
-1. 
+## 如何编写文档
+docs/.vitepress/config.ts 配置Nav和Sidebar
+引入例子组建 如 import basic from './basic.vue'
+:::demo [路径]上编写组件路径如:::demo button/basic
+:::demo [实例] ::: 包裹实例 如：<basic></basic>
+
 
 
 

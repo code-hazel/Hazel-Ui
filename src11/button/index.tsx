@@ -1,10 +1,6 @@
 import { defineComponent, PropType } from "vue";
 import "uno.css";
-/**
- * TS相关知识点备注学习
- * PropType: 用于在用运行时props声明时，给prop标注一个更复杂的类型定义
- * as/<> : 类型断言，告诉编译器，我知道自己在干什么
- */
+
 export type ISize = "small" | "medium" | "large";
 export type IColor =
   | "black"
