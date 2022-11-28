@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -8,7 +9,7 @@ import Unocss from "./config/unocss";
 
 const rollupOptions = {
 
-  external: ["vue", "vue-router"],
+  external: ["vue", "vue-router"], // 作用是将该模块保留在 bundle 之外
   output: {
     globals: {
       vue: "Vue",
@@ -31,14 +32,27 @@ export default defineConfig({
   ],
   build: {
     rollupOptions,
-    minify: false,
+    minify: 'terser', // boolean | 'terser' | 'esbuild'
+    sourcemap: true, // 输出单独 source文件
+    brotliSize: true,  // 生成压缩大小报告
     cssCodeSplit: true,
     lib: {
       entry: "./src/entry.ts",
-      name: "SmartyUI",
+      name: "SmartyUI", // 生成包的名字，在 iife/umd 包，同一页上的其他脚本可以访问它
       fileName: "smarty-ui",
       // 导出模块格式
       formats: ["esm", "umd", "iife"],
     },
   },
+  test: {
+    // enable jest-like global test APIs
+    globals: true,
+    // simulate DOM with happy-dom
+    // (requires installing happy-dom as a peer dependency)
+    environment: 'happy-dom',
+    // 支持tsx组件，很关键
+    transformMode: {
+      web: [/.[tj]sx$/]
+    }
+  }
 });

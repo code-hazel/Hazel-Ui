@@ -8,7 +8,7 @@
 // createApp(SButton)
 // createApp(SFCButton)
 import { createApp } from "vue/dist/vue.esm-browser";
-import SmartyUI from './entry'
+import SmartyUI from '../src/entry'
 createApp({
        template:`
        <div style="margin-bottom:20px;">

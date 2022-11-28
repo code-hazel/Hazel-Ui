@@ -41,6 +41,8 @@ docs/.vitepress/config.ts 配置Nav和Sidebar
 # 单元测试
 npm i jest -g
 根据 jest 约定：
+## Vitest 是一个基于 Vite 的测试框架
+pnpm i -D vitest@"0.21.1" happy-dom@"6.0.4" @vue/test-utils@"2.0.2"
 
 功能函数对应的测试函数放在当前目录的tests目录中；
 测试的函数的文件名会是 fun.spec.js。 比如 add.js =》 add.spec.js。
@@ -49,3 +51,8 @@ npm i jest -g
 ### 引用 .vue 模块时候，编辑器中 import 语句会有红色的警告
 shims-vue.d.ts文件
 因为ts默认不支持vue类型模块，需添加类型定义
+
+## 打包成兼容多种js模块标砖的软件包
+配置vite.config.ts 
+使用到了压缩需安装一下
+pnpm i terser@"5.4.0" -D
