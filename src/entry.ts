@@ -6,7 +6,6 @@
 import { App } from "vue";
 import MyButton from "../src11/button";
 import JSXButton from "../src11/JSXButton";
-
 // 导出单独组件
 export { MyButton, JSXButton };
 

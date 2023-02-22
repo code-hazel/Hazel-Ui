@@ -1,0 +1,67 @@
+
+// $namespace 是来自 config.scss 文件中定义的变量
+// !global 表示其是一个全局变量 整个文件的任意地方使用
+// #{} 字符串插值
+// mixin 定义代码块，@include引入
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global;
+  .#{$B} {
+    @content; // 可以将 include{} 中传递过来的内容导入到指定位置
+  }
+}
+// 定义 Element
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &; // 父选择器
+  $currentSelector: ''; // 当前的选择器 
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector +
+      '.' +
+      $B +
+      $element-separator +
+      $unit +
+      ','};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root { // 处于其内部的代码提升至文档的根部
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+// 定义修改器
+@mixin m($modifier) {
+  $selector: &; // 父选择器变量
+  $currentSelector: '';
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector +
+      $selector +
+      $modifier-separator +
+      $unit +
+      ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+// 定义动作状态
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
