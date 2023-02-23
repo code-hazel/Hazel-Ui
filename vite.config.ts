@@ -18,7 +18,7 @@ const rollupOptions = {
 };
 
 export default defineConfig({
-
+  resolve:{ alias:{ vue:"vue/dist/vue.esm-bundler.js" } },
   plugins: [
     vue(),    // 添加JSX插件
     vueJsx({
@@ -38,8 +38,8 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: "./src/entry.ts",
-      name: "SmartyUI", // 生成包的名字，在 iife/umd 包，同一页上的其他脚本可以访问它
-      fileName: "smarty-ui",
+      name: "HazelUI", // 生成包的名字，在 iife/umd 包，同一页上的其他脚本可以访问它
+      fileName: "hazel-ui",
       // 导出模块格式
       formats: ["esm", "umd", "iife"],
     },

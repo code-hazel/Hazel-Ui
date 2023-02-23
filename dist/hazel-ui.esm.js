@@ -23,7 +23,7 @@ const props = {
   }
 };
 const MyButton = defineComponent({
-  name: "SButton",
+  name: "MyButton",
   props,
   setup(props2, {
     slots
@@ -85,4 +85,4 @@ export {
   MyButton,
   entry as default
 };
-//# sourceMappingURL=smarty-ui.esm.js.map
+//# sourceMappingURL=hazel-ui.esm.js.map
